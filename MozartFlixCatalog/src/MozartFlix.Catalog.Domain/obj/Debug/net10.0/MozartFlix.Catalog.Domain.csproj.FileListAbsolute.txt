@@ -1,0 +1,12 @@
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\bin\Debug\net10.0\MozartFlix.Catalog.Domain.deps.json
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\bin\Debug\net10.0\MozartFlix.Catalog.Domain.dll
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\bin\Debug\net10.0\MozartFlix.Catalog.Domain.pdb
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.AssemblyInfoInputs.cache
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.AssemblyInfo.cs
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.csproj.CoreCompileInputs.cache
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.sourcelink.json
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.dll
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\refint\MozartFlix.Catalog.Domain.dll
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\MozartFlix.Catalog.Domain.pdb
+E:\Projetos\MozartFlix\MozartFlixCatalog\src\MozartFlix.Catalog.Domain\obj\Debug\net10.0\ref\MozartFlix.Catalog.Domain.dll

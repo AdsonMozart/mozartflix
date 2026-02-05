@@ -1,1 +1,8 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MozartFlix.Catalog.Domain/MozartFlix.Catalog.Domain.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MozartFlix.Catalog.UnitTests/MozartFlix.Catalog.UnitTests.csproj" />
+  </Folder>
+</Solution>
