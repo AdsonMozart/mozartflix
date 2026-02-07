@@ -93,6 +93,45 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             Assert.Equal("Description should not be null", exception.Message);
         }
 
+        [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsLessThan3Characters))]
+        [Trait("Domain", "Category - Aggregates")]
+        [InlineData("1")]
+        [InlineData("12")]
+        [InlineData("a")]
+        [InlineData("ca")]
+        public void InstantiateErrorWhenNameIsLessThan3Characters(String invalidName)
+        {
+            Action action =
+                () => new DomainEntity.Category(invalidName, "Category Ok Description");
+            var exception = Assert.Throws<EntityValidationException>(action);
+            Assert.Equal("Name should be at least 3 characters long", exception.Message);
+        }
+
+
+        [Fact(DisplayName = nameof(InstantiateErrorWhenNameIsGreaterThan255Characters))]
+        [Trait("Domain", "Category - Aggregates")]
+        public void InstantiateErrorWhenNameIsGreaterThan255Characters()
+        {
+            var invalidName = String.Join(null, Enumerable.Range(0, 255).Select(_ => "a"));
+            Action action =
+                () => new DomainEntity.Category(invalidName, "Category Ok Description");
+            var exception = Assert.Throws<EntityValidationException>(action);
+            Assert.Equal("Name should be at less or equal 255 characters long", exception.Message);
+        }
+
+
+        [Fact(DisplayName = nameof(InstantiateErrorWhenDescriptionIsGreaterThan10000Characters))]
+        [Trait("Domain", "Category - Aggregates")]
+        public void InstantiateErrorWhenDescriptionIsGreaterThan10000Characters()
+        {
+            var invalidDescription = String.Join(null, Enumerable.Range(0, 10000).Select(_ => "a"));
+            Action action =
+                () => new DomainEntity.Category("Category Name", invalidDescription);
+            var exception = Assert.Throws<EntityValidationException>(action);
+            Assert.Equal("Description should be at less or equal 10000 characters long", exception.Message);
+        }
+
+
         // Nome no mínimo 3 caracteres e no máximo 755 caracteres
         // descrição deve ter no máximo 10.000 caracteres
     }

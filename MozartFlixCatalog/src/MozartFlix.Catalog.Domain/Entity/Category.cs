@@ -30,9 +30,14 @@ namespace MozartFlix.Catalog.Domain.Entity
         {
             if(String.IsNullOrWhiteSpace(Name))
                 throw new EntityValidationException($"{nameof(Name)} should not be empty or null");
-
             if (Description == null)
                 throw new EntityValidationException($"{nameof(Description)} should not be null");
+            if (Name.Length < 3)
+                throw new EntityValidationException($"{nameof(Name)} should be at least 3 characters long");
+            if (Name.Length >= 255)
+                throw new EntityValidationException($"{nameof(Name)} should be at less or equal 255 characters long");
+            if (Description.Length >= 10000)
+                throw new EntityValidationException($"{nameof(Description)} should be at less or equal 10000 characters long");
         }
 
     }
