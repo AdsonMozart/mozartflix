@@ -1,8 +1,4 @@
 ﻿using MozartFlix.Catalog.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xunit;
 using DomainEntity = MozartFlix.Catalog.Domain.Entity;
 
 namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category

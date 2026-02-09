@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MozartFlix.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebc34d44040df0b07e10d23231ee2f6e55c4f2f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6dfaa2ddb48d1aeb63e078d560a96f91e93f1c58")]
 [assembly: System.Reflection.AssemblyProductAttribute("MozartFlix.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MozartFlix.Catalog.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

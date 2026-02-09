@@ -1,23 +1,19 @@
 ﻿using MozartFlix.Catalog.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MozartFlix.Catalog.Domain.SeedWork;
 
 namespace MozartFlix.Catalog.Domain.Entity
 {
-    public class Category
+    public class Category : AggregateRoot
     {
 
-        public Guid Id { get; set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
         // Construtor
-        public Category(string name, string description, bool isActive = true)
+        public Category(string name, string description, bool isActive = true) : base()   
         {
-            Id = Guid.NewGuid();
             Name = name;
             Description = description;
             IsActive = isActive;
