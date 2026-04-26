@@ -99,3 +99,4 @@ E:\Projetos\MozartFlix\MozartFlixCatalog\tests\MozartFlix.Catalog.UnitTests\obj\
 E:\Projetos\MozartFlix\MozartFlixCatalog\tests\MozartFlix.Catalog.UnitTests\obj\Debug\net10.0\MozartFlix.Catalog.UnitTests.pdb
 E:\Projetos\MozartFlix\MozartFlixCatalog\tests\MozartFlix.Catalog.UnitTests\obj\Debug\net10.0\MozartFlix.Catalog.UnitTests.genruntimeconfig.cache
 E:\Projetos\MozartFlix\MozartFlixCatalog\tests\MozartFlix.Catalog.UnitTests\obj\Debug\net10.0\ref\MozartFlix.Catalog.UnitTests.dll
+E:\Projetos\MozartFlix\MozartFlixCatalog\tests\MozartFlix.Catalog.UnitTests\bin\Debug\net10.0\FluentAssertions.dll

@@ -43,7 +43,7 @@ namespace MozartFlix.Catalog.Domain.Entity
 
 
 
-        public void Validate()
+        private void Validate()
         {
             if(String.IsNullOrWhiteSpace(Name))
                 throw new EntityValidationException($"{nameof(Name)} should not be empty or null");

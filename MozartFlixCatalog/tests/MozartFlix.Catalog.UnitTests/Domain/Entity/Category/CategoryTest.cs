@@ -1,4 +1,6 @@
-﻿using MozartFlix.Catalog.Domain.Exceptions;
+﻿using FluentAssertions;
+using MozartFlix.Catalog.Domain.Entity;
+using MozartFlix.Catalog.Domain.Exceptions;
 using DomainEntity = MozartFlix.Catalog.Domain.Entity;
 
 namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
@@ -23,14 +25,14 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             var datetimeAfter = DateTime.Now;
 
             // Assert ("A" referente às validações de regras e sucesso da criação)
-            Assert.NotNull(category);
-            Assert.Equal(validData.Name, category.Name);
-            Assert.Equal(validData.Description, category.Description);
-            Assert.NotEqual(default(Guid), category.Id);
-            Assert.NotEqual(default(DateTime), category.CreatedAt);
-            Assert.True(category.CreatedAt > datetimeBefore);
-            Assert.True(category.CreatedAt < datetimeAfter);
-            Assert.True(category.IsActive);
+            category.Should().NotBeNull();
+            category.Name.Should().Be(validData.Name);
+            category.Description.Should().Be(validData.Description);
+            category.Id.Should().NotBeEmpty();
+            category.CreatedAt.Should().NotBeSameDateAs(default(DateTime));
+            (category.CreatedAt > datetimeBefore).Should().BeTrue();
+            (category.CreatedAt < datetimeAfter).Should().BeTrue();
+            (category.IsActive).Should().BeTrue();
         }
 
 
@@ -54,14 +56,14 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             var datetimeAfter = DateTime.Now;
 
             // Assert ("A" referente às validações de regras e sucesso da criação)
-            Assert.NotNull(category);
-            Assert.Equal(validData.Name, category.Name);
-            Assert.Equal(validData.Description, category.Description);
-            Assert.NotEqual(default(Guid), category.Id);
-            Assert.NotEqual(default(DateTime), category.CreatedAt);
-            Assert.True(category.CreatedAt > datetimeBefore);
-            Assert.True(category.CreatedAt < datetimeAfter);
-            Assert.Equal(isActive, category.IsActive);
+            category.Should().NotBeNull();
+            category.Name.Should().Be(validData.Name);
+            category.Description.Should().Be(validData.Description);
+            category.Id.Should().NotBeEmpty();
+            category.CreatedAt.Should().NotBeSameDateAs(default(DateTime));
+            (category.CreatedAt > datetimeBefore).Should().BeTrue();
+            (category.CreatedAt < datetimeAfter).Should().BeTrue();
+            (category.IsActive).Should().Be(isActive);
         }
 
 
@@ -72,10 +74,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         [InlineData("  ")]
         public void InstantiateErrorWhenNameIsEmpty(string? name)
         {
-            Action action =
-                () => new DomainEntity.Category(name!, "Category Description");
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should not be empty or null", exception.Message);
+            Action action =  () => new DomainEntity.Category(name!, "Category Description");
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should not be empty or null");
         }
 
 
@@ -83,11 +85,12 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         [Trait("Domain", "Category - Aggregates")]
         public void InstantiateErrorWhenDescriptionIsNull()
         {
-            Action action =
-                () => new DomainEntity.Category("Category Name", null!);
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Description should not be null", exception.Message);
+            Action action = () => new DomainEntity.Category("Category Name", null!);
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Description should not be null");
         }
+
 
         [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsLessThan3Characters))]
         [Trait("Domain", "Category - Aggregates")]
@@ -97,10 +100,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         [InlineData("ca")]
         public void InstantiateErrorWhenNameIsLessThan3Characters(String invalidName)
         {
-            Action action =
-                () => new DomainEntity.Category(invalidName, "Category Ok Description");
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should be at least 3 characters long", exception.Message);
+            Action action = () => new DomainEntity.Category(invalidName, "Category Ok Description");
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should be at least 3 characters long");
         }
 
 
@@ -109,10 +112,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void InstantiateErrorWhenNameIsGreaterThan255Characters()
         {
             var invalidName = String.Join(null, Enumerable.Range(0, 255).Select(_ => "a"));
-            Action action =
-                () => new DomainEntity.Category(invalidName, "Category Ok Description");
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should be at less or equal 255 characters long", exception.Message);
+            Action action = () => new DomainEntity.Category(invalidName, "Category Ok Description");
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should be at less or equal 255 characters long");
         }
 
 
@@ -121,10 +124,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void InstantiateErrorWhenDescriptionIsGreaterThan10000Characters()
         {
             var invalidDescription = String.Join(null, Enumerable.Range(0, 10000).Select(_ => "a").ToArray());
-            Action action =
-                () => new DomainEntity.Category("Category Name", invalidDescription);
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Description should be at less or equal 10000 characters long", exception.Message);
+            Action action = () => new DomainEntity.Category("Category Name", invalidDescription);
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Description should be at less or equal 10000 characters long");
         }
 
 
@@ -142,7 +145,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             var category = new DomainEntity.Category(validData.Name, validData.Description, false);
             category.Activate();
 
-            Assert.True(category.IsActive);
+            category.IsActive.Should().BeTrue();
         }
 
 
@@ -160,7 +163,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             var category = new DomainEntity.Category(validData.Name, validData.Description, true);
             category.Deactivate();
 
-            Assert.False(category.IsActive);
+            category.IsActive.Should().BeFalse();
         }
 
 
@@ -173,8 +176,8 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
 
             category.Update(newValues.Name, newValues.Description);
 
-            Assert.Equal(newValues.Name, category.Name);
-            Assert.Equal(newValues.Description, category.Description);
+            category.Name.Should().Be(newValues.Name);
+            category.Description.Should().Be(newValues.Description);
         }
 
 
@@ -188,8 +191,8 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
 
             category.Update(newValues.Name);
 
-            Assert.Equal(newValues.Name, category.Name);
-            Assert.Equal(currentDescription, category.Description);
+            category.Name.Should().Be(newValues.Name);
+            category.Description.Should().Be(currentDescription);
         }
 
 
@@ -201,10 +204,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void UpdateErrorWhenNameIsEmpty(string? name)
         {
             var category = new DomainEntity.Category("Category Name", "Category Description");
-            Action action =
-                () => category.Update(name!);
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should not be empty or null", exception.Message);
+            Action action = () => category.Update(name!);
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should not be empty or null");
         }
 
 
@@ -217,10 +220,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void UpdateErrorWhenNameIsLessThan3Characters(String invalidName)
         {
             var category = new DomainEntity.Category("Category Name", "Category Description");
-            Action action =
-                () => category.Update(invalidName);
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should be at least 3 characters long", exception.Message);
+            Action action = () => category.Update(invalidName);
+            action.Should()    
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should be at least 3 characters long");
         }
 
 
@@ -230,10 +233,10 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         {
             var category = new DomainEntity.Category("Category Name", "Category Description");
             var invalidName = String.Join(null, Enumerable.Range(0, 255).Select(_ => "a").ToArray());
-            Action action =
-                () => category.Update(invalidName, "Category Ok Description");
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Name should be at less or equal 255 characters long", exception.Message);
+            Action action = () => category.Update(invalidName, "Category Ok Description");
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Name should be at less or equal 255 characters long");
         }
 
 
@@ -243,12 +246,12 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         {
             var category = new DomainEntity.Category("Category Name", "Category Description");
             var invalidDescription = String.Join(null, Enumerable.Range(0, 10000).Select(_ => "a").ToArray());
-            Action action =
-                () => category.Update("Category New Name", invalidDescription);
-            var exception = Assert.Throws<EntityValidationException>(action);
-            Assert.Equal("Description should be at less or equal 10000 characters long", exception.Message);
+            Action action = () => category.Update("Category New Name", invalidDescription);
+            action.Should()
+                .Throw<EntityValidationException>()
+                .WithMessage("Description should be at less or equal 10000 characters long");
         }
-    }
+     }
 
 
 }
