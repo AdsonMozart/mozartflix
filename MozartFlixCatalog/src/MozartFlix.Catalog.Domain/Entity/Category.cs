@@ -54,7 +54,7 @@ namespace MozartFlix.Catalog.Domain.Entity
             if (Name.Length >= 255)
                 throw new EntityValidationException($"{nameof(Name)} should be at less or equal 255 characters long");
             if (Description.Length >= 10000)
-                throw new EntityValidationException($"{nameof(Description)} should be at less or equal 10000 characters long");
+                throw new EntityValidationException($"{nameof(Description)} should be less or equal 10000 characters long");
         }
 
     }

@@ -96,10 +96,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
 
         [Theory(DisplayName = nameof(InstantiateErrorWhenNameIsLessThan3Characters))]
         [Trait("Domain", "Category - Aggregates")]
-        [InlineData("1")]
-        [InlineData("12")]
-        [InlineData("a")]
-        [InlineData("ca")]
+        [MemberData(nameof(GetNamesWithLessThan3Characters), parameters: 10)]
         public void InstantiateErrorWhenNameIsLessThan3Characters(String invalidName)
         {
             var validCategory = _categoryTestFixture.GetValidCategory();
@@ -107,6 +104,18 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             action.Should()
                 .Throw<EntityValidationException>()
                 .WithMessage("Name should be at least 3 characters long");
+        }
+
+        public static IEnumerable<object[]> GetNamesWithLessThan3Characters(int numberOfTests = 6)
+        {
+            var fixture = new CategoryTestFixture();
+            for (int i = 0; i < numberOfTests; i++)
+            {
+                var isOdd = i % 2 == 1;
+                yield return new object[] {
+                    fixture.GetValidCategoryName()[..(isOdd ? 1 : 2)]
+                };
+            }
         }
 
 
@@ -132,7 +141,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             Action action = () => new DomainEntity.Category(validCategory.Name, invalidDescription);
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("Description should be at less or equal 10000 characters long");
+                .WithMessage("Description should be less or equal 10000 characters long");
         }
 
 
@@ -167,12 +176,12 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void Update()
         {
             var category = _categoryTestFixture.GetValidCategory();
-            var newValues = new { Name = "New Name", Description = "New Description" };
+            var categoryWithNewValues = _categoryTestFixture.GetValidCategory();
 
-            category.Update(newValues.Name, newValues.Description);
+            category.Update(categoryWithNewValues.Name, categoryWithNewValues.Description);
 
-            category.Name.Should().Be(newValues.Name);
-            category.Description.Should().Be(newValues.Description);
+            category.Name.Should().Be(categoryWithNewValues.Name);
+            category.Description.Should().Be(categoryWithNewValues.Description);
         }
 
 
@@ -181,12 +190,12 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void UpdateOnlyName()
         {
             var category = _categoryTestFixture.GetValidCategory();
-            var newValues = new { Name = "New Name"};
+            var newName = _categoryTestFixture.GetValidCategoryName();
             var currentDescription = category.Description;
 
-            category.Update(newValues.Name);
+            category.Update(newName);
 
-            category.Name.Should().Be(newValues.Name);
+            category.Name.Should().Be(newName);
             category.Description.Should().Be(currentDescription);
         }
 
@@ -227,7 +236,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void UpdateErrorWhenNameIsGreaterThan255Characters()
         {
             var category = _categoryTestFixture.GetValidCategory();
-            var invalidName = String.Join(null, Enumerable.Range(0, 255).Select(_ => "a").ToArray());
+            var invalidName = _categoryTestFixture.Faker.Lorem.Letter(256);
             Action action = () => category.Update(invalidName);
             action.Should()
                 .Throw<EntityValidationException>()
@@ -240,11 +249,14 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void UpdateErrorWhenDescriptionIsGreaterThan10000Characters()
         {
             var category = _categoryTestFixture.GetValidCategory();
-            var invalidDescription = String.Join(null, Enumerable.Range(0, 10000).Select(_ => "a").ToArray());
+            var invalidDescription = _categoryTestFixture.Faker.Commerce.ProductDescription();
+            while (invalidDescription.Length <= 10_000)
+                invalidDescription = $"{invalidDescription} {_categoryTestFixture.Faker.Commerce.ProductDescription()}";
+
             Action action = () => category.Update("Category New Name", invalidDescription);
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("Description should be at less or equal 10000 characters long");
+                .WithMessage("Description should be less or equal 10000 characters long");
         }
      }
 

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JXHnOe6KNu0=",
+  "dgSpecHash": "/75rGkeoiho=",
   "success": true,
   "projectFilePath": "E:\\Projetos\\MozartFlix\\MozartFlixCatalog\\tests\\MozartFlix.Catalog.UnitTests\\MozartFlix.Catalog.UnitTests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mozar\\.nuget\\packages\\bogus\\35.6.5\\bogus.35.6.5.nupkg.sha512",
     "C:\\Users\\mozar\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\mozar\\.nuget\\packages\\fluentassertions\\8.9.0\\fluentassertions.8.9.0.nupkg.sha512",
     "C:\\Users\\mozar\\.nuget\\packages\\microsoft.codecoverage\\17.14.1\\microsoft.codecoverage.17.14.1.nupkg.sha512",
