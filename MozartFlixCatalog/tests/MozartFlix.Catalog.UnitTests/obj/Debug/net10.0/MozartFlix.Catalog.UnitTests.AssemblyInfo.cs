@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MozartFlix.Catalog.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fa7e25461c811c527eb5fe9869afa04f7300517")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72f800c36d4b3ec34433d724b7a281148c423450")]
 [assembly: System.Reflection.AssemblyProductAttribute("MozartFlix.Catalog.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MozartFlix.Catalog.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
