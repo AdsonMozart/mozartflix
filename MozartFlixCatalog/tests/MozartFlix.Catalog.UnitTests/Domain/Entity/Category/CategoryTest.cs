@@ -124,7 +124,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void InstantiateErrorWhenNameIsGreaterThan255Characters()
         {
             var validCategory = _categoryTestFixture.GetValidCategory();
-            var invalidName = String.Join(null, Enumerable.Range(0, 255).Select(_ => "a"));
+            var invalidName = String.Join(null, Enumerable.Range(1, 256).Select(_ => "a"));
             Action action = () => new DomainEntity.Category(invalidName, validCategory.Description);
             action.Should()
                 .Throw<EntityValidationException>()
@@ -137,11 +137,11 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
         public void InstantiateErrorWhenDescriptionIsGreaterThan10000Characters()
         {
             var validCategory = _categoryTestFixture.GetValidCategory();
-            var invalidDescription = String.Join(null, Enumerable.Range(0, 10000).Select(_ => "a").ToArray());
+            var invalidDescription = String.Join(null, Enumerable.Range(1, 10001).Select(_ => "a").ToArray());
             Action action = () => new DomainEntity.Category(validCategory.Name, invalidDescription);
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("Description should be less or equal 10000 characters long");
+                .WithMessage("Description should be at less or equal 10000 characters long");
         }
 
 
@@ -256,7 +256,7 @@ namespace MozartFlix.Catalog.UnitTests.Domain.Entity.Category
             Action action = () => category.Update("Category New Name", invalidDescription);
             action.Should()
                 .Throw<EntityValidationException>()
-                .WithMessage("Description should be less or equal 10000 characters long");
+                .WithMessage("Description should be at less or equal 10000 characters long");
         }
      }
 
