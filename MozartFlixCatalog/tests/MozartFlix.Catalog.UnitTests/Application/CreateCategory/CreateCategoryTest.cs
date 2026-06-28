@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Moq;
+using MozartFlix.Catalog.Application.Interfaces;
 using MozartFlix.Catalog.Domain.Entity;
 using MozartFlix.Catalog.Domain.Repository;
 using System;
@@ -23,7 +24,7 @@ namespace MozartFlix.Catalog.UnitTests.Application.CreateCategory
             var output = await useCase.Handle(input, CancellationToken.None);
 
             repositoryMock.Verify(repository => repository.Insert(It.IsAny<Category>(), It.IsAny<CancellationToken>()), Times.Once);
-            unitOfWorkMock.Verify(unitOfWork => unitOfWork.Commit(It.IsAny<CancellationToken>(), Times.Once));
+            unitOfWorkMock.Verify(unitOfWork => unitOfWork.Commit(It.IsAny<CancellationToken>()), Times.Once);
 
             output.ShouldNotBeNull();
             output.Name.Should().Be("Category Name");
