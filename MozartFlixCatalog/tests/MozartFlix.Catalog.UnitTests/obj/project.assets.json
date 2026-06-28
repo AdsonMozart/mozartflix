@@ -477,6 +477,9 @@
       "MozartFlix.Catalog.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "MozartFlix.Catalog.Domain": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/MozartFlix.Catalog.Application.dll": {}
         },

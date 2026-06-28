@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\MozartFlix.Catalog.Application\MozartFlix.Catalog.Application.csproj" />
     <ProjectReference Include="..\..\src\MozartFlix.Catalog.Domain\MozartFlix.Catalog.Domain.csproj" />
   </ItemGroup>
 

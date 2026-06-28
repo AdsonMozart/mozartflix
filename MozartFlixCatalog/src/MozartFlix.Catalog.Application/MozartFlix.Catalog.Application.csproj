@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MozartFlix.Catalog.Domain\MozartFlix.Catalog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
