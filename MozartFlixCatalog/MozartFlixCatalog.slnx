@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/MozartFlix.Catalog.Application/MozartFlix.Catalog.Application.csproj" Id="f6cff5b1-aadf-47fc-9c0a-804bebb85bce" />
     <Project Path="src/MozartFlix.Catalog.Domain/MozartFlix.Catalog.Domain.csproj" />
   </Folder>
   <Folder Name="/tests/">

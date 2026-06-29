@@ -474,6 +474,19 @@
           "build/net8.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "MozartFlix.Catalog.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "MozartFlix.Catalog.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MozartFlix.Catalog.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MozartFlix.Catalog.Application.dll": {}
+        }
+      },
       "MozartFlix.Catalog.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -1112,6 +1125,11 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "MozartFlix.Catalog.Application/1.0.0": {
+      "type": "project",
+      "path": "../../src/MozartFlix.Catalog.Application/MozartFlix.Catalog.Application.csproj",
+      "msbuildProject": "../../src/MozartFlix.Catalog.Application/MozartFlix.Catalog.Application.csproj"
+    },
     "MozartFlix.Catalog.Domain/1.0.0": {
       "type": "project",
       "path": "../../src/MozartFlix.Catalog.Domain/MozartFlix.Catalog.Domain.csproj",
@@ -1124,6 +1142,7 @@
       "FluentAssertions >= 8.9.0",
       "Microsoft.NET.Test.Sdk >= 17.14.1",
       "Moq >= 4.20.72",
+      "MozartFlix.Catalog.Application >= 1.0.0",
       "MozartFlix.Catalog.Domain >= 1.0.0",
       "coverlet.collector >= 6.0.4",
       "xunit >= 2.9.3",
@@ -1163,6 +1182,9 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
+            "E:\\Projetos\\MozartFlix\\MozartFlixCatalog\\src\\MozartFlix.Catalog.Application\\MozartFlix.Catalog.Application.csproj": {
+              "projectPath": "E:\\Projetos\\MozartFlix\\MozartFlixCatalog\\src\\MozartFlix.Catalog.Application\\MozartFlix.Catalog.Application.csproj"
+            },
             "E:\\Projetos\\MozartFlix\\MozartFlixCatalog\\src\\MozartFlix.Catalog.Domain\\MozartFlix.Catalog.Domain.csproj": {
               "projectPath": "E:\\Projetos\\MozartFlix\\MozartFlixCatalog\\src\\MozartFlix.Catalog.Domain\\MozartFlix.Catalog.Domain.csproj"
             }

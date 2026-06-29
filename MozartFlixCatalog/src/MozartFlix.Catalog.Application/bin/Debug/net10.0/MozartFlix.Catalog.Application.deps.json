@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "MozartFlix.Catalog.Application/1.0.0": {
+        "dependencies": {
+          "MozartFlix.Catalog.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MozartFlix.Catalog.Application.dll": {}
+        }
+      },
+      "MozartFlix.Catalog.Domain/1.0.0": {
+        "runtime": {
+          "MozartFlix.Catalog.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MozartFlix.Catalog.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MozartFlix.Catalog.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
