@@ -1,6 +1,7 @@
 package com.mozart.admin.catalogo.domain.exceptions;
 
 import java.util.List;
+import com.mozart.admin.catalogo.domain.validation.Error;
 
 public class DomainException extends RuntimeException{
 

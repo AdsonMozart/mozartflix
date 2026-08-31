@@ -9,7 +9,7 @@ import java.util.List;
 public class ThrowsValidationHandler implements ValidationHandler {
     @Override
     public ValidationHandler append(final Error anError) {
-        throw DomainException.with(List.of());
+        throw DomainException.with(List.of(anError));
     }
 
     @Override
@@ -20,15 +20,15 @@ public class ThrowsValidationHandler implements ValidationHandler {
     public ValidationHandler validate(final Validation aValidation) {
         try {
             aValidation.validate();
-        } catch (Exception ex) {
-            throw DomainException.with(List.of());
+        } catch (final Exception ex) {
+            throw DomainException.with(List.of(new Error(ex.getMessage())));
         }
 
         return this;
     }
 
     @Override
-    public List<java.lang.Error> getErrors() {
+    public List<Error> getErrors() {
         return List.of();
     }
 }
