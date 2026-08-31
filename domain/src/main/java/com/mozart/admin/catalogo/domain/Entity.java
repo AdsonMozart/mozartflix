@@ -1,5 +1,7 @@
 package com.mozart.admin.catalogo.domain;
 
+import com.mozart.admin.catalogo.domain.validation.ValidationHandler;
+
 import java.util.Objects;
 
 public abstract class Entity<ID extends Identifier> {
@@ -11,6 +13,10 @@ public abstract class Entity<ID extends Identifier> {
     protected Entity(final ID id) {
         Objects.requireNonNull(id, "'id' should not be null");
         this.id = id;
+    }
+
+    public void validate(ValidationHandler handler) {
+
     }
 
     // Getter
