@@ -1,5 +1,4 @@
 rootProject.name = 'admin_mozartflix'
 include 'domain'
 include 'application'
-include 'application'
 include 'infrastructure'
